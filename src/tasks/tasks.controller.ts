@@ -11,13 +11,13 @@ export class TasksController {
 
     constructor(private taskService: TasksService) {}
 
-    @Get(':id') // Solicitar datos
-    getTasks(): Task[] {
+    @Get() // Solicitar datos
+    getTasks(): Promise<Task[]> {
         return this.taskService.getTasks();
     }
 
-    @Get('taskId')
-    getTask(@Param('taskId') taskId): Task {
+    @Get(':taskId')
+    getTask(@Param('taskId') taskId: string) {
         return this.taskService.getTask(taskId);
     }
 
